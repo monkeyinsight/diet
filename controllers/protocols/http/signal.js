@@ -197,7 +197,10 @@
     			request.on('data', function(data){ signal.body += data; });
     			request.on('end', function(){ 
     				if(request.headers['content-type'].toString().indexOf('application/x-www-form-urlencoded') != -1){
-    					signal.body = signal.qs.parse(decodeURIComponent(signal.body));
+    					signal.body = signal.qs.parse(signal.body);
+                        for (var i in signal.body) {
+                            signal.body[i] = decodeURIComponent(signal.body[i]);
+                        }
     				} else if(request.headers['content-type'] == "application/json") {
     					try {
     						signal.body = JSON.parse(signal.body); 
