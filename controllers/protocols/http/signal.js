@@ -153,7 +153,7 @@
     			signal.end({ passed: false, errors: signal.errors }, isLast)
     		},
     		jsonString: function(input){
-    		    //if(utils.isset(input)) signal.data = Object.merge(signal.data, input)
+    		    if(utils.isset(input)) signal.data = Object.merge(signal.data, input)
     		    if(!signal.statusCode) signal.status(200)
     		    signal.header('content-type', 'application/json')
     		    return JSON.stringify(signal.data);
