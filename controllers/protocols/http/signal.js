@@ -113,11 +113,9 @@
     			        let data = signal.jsonString(input); // json
     			        signal.setFinalHeaders(data); 
     			        response.end(data)      
-    			        if(!isLast) signal.nextRoute() // call next route                                                       
-    			    
+    			        if(!isLast) signal.nextRoute() // call next route
     			    } else if ((!input && app.html) || (input && !Path.extname(input) && app.html)) {
-    			        signal.html(input) // html                  
-    			    
+    			        signal.html(input) // html
     			    } else {
                         signal.setFinalHeaders(input); 
                         response.end(input)  // default
@@ -155,7 +153,7 @@
     			signal.end({ passed: false, errors: signal.errors }, isLast)
     		},
     		jsonString: function(input){
-    		    if(utils.isset(input)) signal.data = Object.merge(signal.data, input)
+    		    //if(utils.isset(input)) signal.data = Object.merge(signal.data, input)
     		    if(!signal.statusCode) signal.status(200)
     		    signal.header('content-type', 'application/json')
     		    return JSON.stringify(signal.data);
